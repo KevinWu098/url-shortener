@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -30,7 +31,9 @@ type response struct {
 func ShortenURL(c fiber.Ctx) error {
 	body := new(request)
 
-	if err := c.Bind().Body(body); err != nil {
+	err := c.Bind().Body(body)
+	fmt.Print(err)
+	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Cannot parse JSON",
 		})
@@ -41,7 +44,7 @@ func ShortenURL(c fiber.Ctx) error {
 	val, err := r2.Get(database.Ctx, c.IP()).Result()
 
 	if err == redis.Nil {
-		_ = r2.Set(database.Ctx, c.IP(), os.Getenv("API_QUOTE"), 30*60*time.Second).Err()
+		_ = r2.Set(database.Ctx, c.IP(), os.Getenv("API_QUOTA"), 30*60*time.Second).Err()
 	} else {
 		valInt, _ := strconv.Atoi(val)
 
