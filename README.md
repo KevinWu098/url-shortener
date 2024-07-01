@@ -1,3 +1,3 @@
 # url-shortener
 
-> built with Go 🐹 and Redis 🟥
+> built with Go 🐹, Redis 🟥, and Docker 🐳
