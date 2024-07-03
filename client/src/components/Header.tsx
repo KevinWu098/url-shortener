@@ -9,8 +9,6 @@ import { Button } from "./ui/button";
 const Header = () => {
     const { sessionClaims } = auth();
 
-    console.log(sessionClaims?.metadata);
-
     return (
         <div className="flex justify-end border-b px-8 py-1 drop-shadow-lg">
             {/* <Image
@@ -25,7 +23,7 @@ const Header = () => {
                 {sessionClaims?.metadata?.role === "admin" && (
                     <Link href={"/admin"}>
                         <Button
-                            className="font-medium text-red-500"
+                            className="font-semibold text-red-500"
                             variant={"link"}
                         >
                             admin
