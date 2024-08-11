@@ -1,3 +1,3 @@
 # url-shortener 🔗
 
-> frontend built with Next.js 🔼, backend built with Go 🐹
+> frontend in Next.js 🔼, backend in Go 🐹
